@@ -48,12 +48,12 @@ namespace SalesWebMvc.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id Not Provided" });
+                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
             }
             var obj = _sellerService.FindById(id.Value);
             if (obj == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id Not Found" });
+                return RedirectToAction(nameof(Error), new { message = "Id not found" });
             }
             return View(obj);
         }
@@ -68,12 +68,12 @@ namespace SalesWebMvc.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id Not Provided" });
+                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
             }
             var obj = _sellerService.FindById(id.Value);
             if (obj == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id Not Found" });
+                return RedirectToAction(nameof(Error), new { message = "Id not found" });
             }
             return View(obj);
         }
@@ -81,12 +81,12 @@ namespace SalesWebMvc.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id Not Provided" });
+                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
             }
             var obj = _sellerService.FindById(id.Value);
             if (obj == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id Not Found" });
+                return RedirectToAction(nameof(Error), new { message = "Id not found" });
             }
             List<Department> departments = _departmentService.FindAll();
             SellerFormViewModel viewModel = new SellerFormViewModel { Seller = obj, Departments = departments };
@@ -111,12 +111,14 @@ namespace SalesWebMvc.Controllers
             }
         }
 
-        public IActionResult Error(string messege)
+        public IActionResult Error(string message)
         {
             var viewModel = new ErrorViewModel
+
             {
-                Message = messege,
+                Message = message,
                 RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+
             };
             return View(viewModel);
         }
